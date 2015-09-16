@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;testBox.java&apos; to &apos;testAWT/src/testAWT&apos;&#x0D;&#x0A;- 原始物件：&apos;test_期末專題&apos;&#x0D;&#x0A;- 目的地元素：&apos;testAWT/src/testAWT&apos;&#x0D;&#x0A;- 原始元素：&apos;test_期末專題.testBox.java&apos;" description="複製編譯單元" destination="=testAWT/src&lt;testAWT" element1="/src&lt;test_期末專題{testBox.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1432215463490" units="1" version="1.0"/>
+</session>

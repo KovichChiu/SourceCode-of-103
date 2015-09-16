@@ -1,0 +1,12 @@
+
+public class Class_006 {
+
+	/*
+	 * 6. 輸入一個字元, 判斷是大寫或小寫或是其他字元
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

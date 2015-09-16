@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="F:\NVPACK\jdk1.6.0_24" version="1.6.0_24">
+<bootpath>
+<entry path="F:\NVPACK\jdk1.6.0_24\jre\lib\resources.jar"/>
+<entry path="F:\NVPACK\jdk1.6.0_24\jre\lib\rt.jar"/>
+<entry path="F:\NVPACK\jdk1.6.0_24\jre\lib\sunrsasign.jar"/>
+<entry path="F:\NVPACK\jdk1.6.0_24\jre\lib\jsse.jar"/>
+<entry path="F:\NVPACK\jdk1.6.0_24\jre\lib\jce.jar"/>
+<entry path="F:\NVPACK\jdk1.6.0_24\jre\lib\charsets.jar"/>
+<entry path="F:\NVPACK\jdk1.6.0_24\jre\lib\modules\jdk.boot.jar"/>
+<entry path="F:\NVPACK\jdk1.6.0_24\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="F:\NVPACK\jdk1.6.0_24\jre\lib\ext"/>
+<entry path="C:\windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="F:\NVPACK\jdk1.6.0_24\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="C:\Program Files\Java\jre1.8.0_45" version="1.8.0_45">
+<bootpath>
+<entry path="C:\Program Files\Java\jre1.8.0_45\lib\resources.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_45\lib\rt.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_45\lib\sunrsasign.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_45\lib\jsse.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_45\lib\jce.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_45\lib\charsets.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_45\lib\jfr.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_45\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files\Java\jre1.8.0_45\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files\Java\jre1.8.0_45\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="C:\NVPACK\jdk1.6.0_24" version="1.6.0_24">
+<bootpath>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\resources.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\rt.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\sunrsasign.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\jsse.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\jce.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\charsets.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\modules\jdk.boot.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\ext"/>
+<entry path="C:\windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="E:\NVPACK\jdk1.6.0_24" version="1.6.0_24">
+<bootpath>
+<entry path="E:\NVPACK\jdk1.6.0_24\lib\resources.jar"/>
+<entry path="E:\NVPACK\jdk1.6.0_24\lib\rt.jar"/>
+<entry path="E:\NVPACK\jdk1.6.0_24\lib\sunrsasign.jar"/>
+<entry path="E:\NVPACK\jdk1.6.0_24\lib\jsse.jar"/>
+<entry path="E:\NVPACK\jdk1.6.0_24\lib\jce.jar"/>
+<entry path="E:\NVPACK\jdk1.6.0_24\lib\charsets.jar"/>
+<entry path="E:\NVPACK\jdk1.6.0_24\lib\modules\jdk.boot.jar"/>
+<entry path="E:\NVPACK\jdk1.6.0_24\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="E:\NVPACK\jdk1.6.0_24\lib\ext"/>
+<entry path="C:\windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="E:\NVPACK\jdk1.6.0_24\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="C:\Program Files\Java\jre1.8.0_51" version="1.8.0_51">
+<bootpath>
+<entry path="C:\Program Files\Java\jre1.8.0_51\lib\resources.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_51\lib\rt.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_51\lib\sunrsasign.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_51\lib\jsse.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_51\lib\jce.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_51\lib\charsets.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_51\lib\jfr.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_51\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files\Java\jre1.8.0_51\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files\Java\jre1.8.0_51\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="C:\NVPACK\jdk1.6.0_24\jre" version="1.6.0_24">
+<bootpath>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\resources.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\rt.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\sunrsasign.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\jsse.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\jce.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\charsets.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\modules\jdk.boot.jar"/>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\ext"/>
+<entry path="C:\windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\NVPACK\jdk1.6.0_24\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="C:\Program Files\Java\jre1.8.0_60" version="1.8.0_60">
+<bootpath>
+<entry path="C:\Program Files\Java\jre1.8.0_60\lib\resources.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_60\lib\rt.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_60\lib\sunrsasign.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_60\lib\jsse.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_60\lib\jce.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_60\lib\charsets.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_60\lib\jfr.jar"/>
+<entry path="C:\Program Files\Java\jre1.8.0_60\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Program Files\Java\jre1.8.0_60\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Program Files\Java\jre1.8.0_60\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;小夫的POE商品專賣&apos;" deleteContents="false" description="Delete resource &apos;小夫的POE商品專賣&apos;" element1="/小夫的POE商品專賣" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1426235334253"/>
+</session>

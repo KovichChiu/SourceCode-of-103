@@ -1,0 +1,230 @@
+package testAWT;
+import java.util.Random;
+public class makeBox {
+	private int [] a_i;
+	private int [] b_i;
+	private int [] c_i;
+	private int [] d_i;
+	int x;
+	private Random ran = new Random();
+	
+	public makeBox(int n){
+		switch(n){
+		case 0:
+			chioseBox(1);
+			break;
+		case 1:
+			x = ran.nextInt(9)+2;
+			chioseBox(x);
+			break;
+		case 2:
+			x = ran.nextInt(8)+11;
+			chioseBox(x);
+			break;
+		case 3:
+			chioseBox(19);
+		}
+	}
+	public void chioseBox(int n){
+		switch(n){
+		case 1:
+			a_i= new int [4];
+			for(int i=0;i<4;i++){
+				a_i[i] = i;
+			}
+			break;
+		case 2:
+			a_i = new int [1];
+			a_i[0] = 0;
+			b_i = new int [3];
+			for(int i=0;i<3;i++){
+				b_i[i] = i;
+			}
+			break;
+		case 3:
+			a_i = new int [1];
+			a_i[0] = 1;
+			b_i = new int [3];
+			for(int i=0;i<3;i++){
+				b_i[i] = i;
+			}
+			break;
+		case 4:
+			a_i = new int [1];
+			a_i[0] = 2;
+			b_i = new int [3];
+			for(int i=0;i<3;i++){
+				b_i[i] = i;
+			}
+			break;
+		case 5:
+			a_i = new int [2];
+			b_i = new int [2];
+			for(int i=0;i<2;i++){
+				a_i[i] = i;
+				b_i[i] = i;
+			}
+			break;
+		case 6:
+			a_i = new int [3];
+			b_i = new int [1];
+			for(int i=0;i<3;i++){
+				a_i[i] = i;
+			}
+			b_i [0] = 0;
+			break;
+		case 7:
+			a_i = new int [3];
+			b_i = new int [1];
+			for(int i=0;i<3;i++){
+				a_i[i] = i;
+			}
+			b_i [0] = 1;
+			break;
+		case 8:
+			a_i = new int [3];
+			b_i = new int [1];
+			for(int i=0;i<3;i++){
+				a_i[i] = i;
+			}
+			b_i [0] = 2;
+			break;
+		case 9:
+			a_i = new int [2];
+			b_i = new int [2];
+			for(int i=0;i<2;i++){
+				a_i[i] = i;
+				b_i[i] = i+1;
+			}
+			break;
+		case 10:
+			a_i = new int [2];
+			b_i = new int [2];
+			for(int i=0;i<2;i++){
+				a_i[i] = i+1;
+				b_i[i] = i;
+			}
+			break;
+		case 11:
+			a_i = new int [1];
+			b_i = new int [1];
+			c_i = new int [2];
+			a_i[0] = 0;
+			b_i[0] = 0;
+			for(int i=0;i<2;i++){
+				c_i [i] = i;
+			}
+			break;
+		case 12:
+			a_i = new int [1];
+			b_i = new int [1];
+			c_i = new int [2];
+			a_i[0] = 1;
+			b_i[0] = 1;
+			for(int i=0;i<2;i++){
+				c_i [i] = i;
+			}
+			break;
+		case 13:
+			a_i = new int [2];
+			b_i = new int [1];
+			c_i = new int [1];
+			
+			c_i[0] = 0;
+			b_i[0] = 0;
+			for(int i=0;i<2;i++){
+				a_i [i] = i;
+			}
+			break;
+		case 14:
+			a_i = new int [2];
+			b_i = new int [1];
+			c_i = new int [1];
+			
+			c_i[0] = 1;
+			b_i[0] = 1;
+			for(int i=0;i<2;i++){
+				a_i [i] = i;
+			}
+			break;
+		case 15:
+			a_i = new int [1];
+			b_i = new int [2];
+			c_i = new int [1];
+			
+			a_i[0] = 0;
+			c_i[0] = 0;
+			for(int i=0;i<2;i++){
+				b_i [i] = i;
+			}
+			break;
+		case 16:
+			a_i = new int [1];
+			b_i = new int [2];
+			c_i = new int [1];
+			
+			a_i[0] = 1;
+			c_i[0] = 1;
+			for(int i=0;i<2;i++){
+				b_i [i] = i;
+			}
+			break;
+		case 17:
+			a_i = new int [1];
+			b_i = new int [2];
+			c_i = new int [1];
+			
+			a_i[0] = 0;
+			c_i[0] = 1;
+			for(int i=0;i<2;i++){
+				b_i [i] = i;
+			}
+			break;
+		case 18:
+			a_i = new int [1];
+			b_i = new int [2];
+			c_i = new int [1];
+			
+			a_i[0] = 1;
+			c_i[0] = 0;
+			for(int i=0;i<2;i++){
+				b_i [i] = i;
+			}
+			break;
+		case 19:
+			a_i = new int [1];
+			b_i = new int [1];
+			c_i = new int [1];
+			d_i = new int [1];
+			a_i[0] = 0;
+			b_i[0] = 0;
+			c_i[0] = 0;
+			d_i[0] = 0;
+			break;
+		}
+	}
+	public int geta_i(int n){return a_i[n];}
+	public int getb_i(int n){return b_i[n];}
+	public int getc_i(int n){return c_i[n];}
+	public int getd_i(int n){return d_i[n];}
+	public int getalength(){return a_i.length;}
+	public int getblength(){return b_i.length;}
+	public int getclength(){return c_i.length;}
+	public int getdlength(){return d_i.length;}
+	public void reseta(int n, int num , int seat){
+		a_i = new int [num];
+		a_i[seat] = n;
+	}
+	public void resetb(int n, int num, int seat){
+		b_i = new int [num];
+		b_i[seat] = n;
+	}
+	public void resetc(int n, int num, int seat){
+		c_i = new int [num];
+		c_i[seat] = n;
+	}
+	public void resetd(int n, int num, int seat){
+		d_i = new int [num];
+		d_i[seat] = n;
+	}
+}

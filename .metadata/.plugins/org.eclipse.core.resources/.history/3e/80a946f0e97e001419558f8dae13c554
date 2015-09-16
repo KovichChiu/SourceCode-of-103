@@ -1,0 +1,55 @@
+import java.util.Scanner;
+public class Class_003 {
+
+	/*
+	 * 3. 假設這期的統一發票中獎號碼為01272636、39412201、94586356。請設計一程式讓使用者輸入一組發票號碼即可印出中獎金額。
+     *    (其中末三碼相同獎金200元；末四碼相同獎金1000元；末五碼相同獎金4000元；
+	 */
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		System.out.println("這期的統一發票中獎號碼為 01272636、39412201、94586356。");
+		System.out.print("請輸入您要兌獎的發票號碼：");
+		String a = scn.next();
+		char [] b = a.toCharArray();
+		int a1 = b[a.length()-1]-'0';
+		int a2 = b[a.length()-2]-'0';
+		int a3 = b[a.length()-3]-'0';
+		int a4 = b[a.length()-4]-'0';
+		int a5 = b[a.length()-5]-'0';
+		if(a1==6&&a2==3&&a3==6){
+			if(a4==2){
+				if(a5==7){
+					System.out.print("恭喜您中獎了，獎金為4000元！");
+				}else{
+					System.out.print("恭喜您中獎了，獎金為1000元！");
+				}
+			}else{
+				System.out.print("恭喜您中獎了，獎金為200元！");
+			}
+		}
+		else if(a1==1&&a2==0&&a3==2){
+			if(a4==2){
+				if(a5==1){
+					System.out.print("恭喜您中獎了，獎金為4000元！");
+				}else{
+					System.out.print("恭喜您中獎了，獎金為1000元！");
+				}
+			}else{
+				System.out.print("恭喜您中獎了，獎金為200元！");
+			}
+		}
+		else if(a1==6&&a2==5&&a3==3){
+			if(a4==6){
+				if(a5==8){
+					System.out.print("恭喜您中獎了，獎金為4000元！");
+				}else{
+					System.out.print("恭喜您中獎了，獎金為1000元！");
+				}
+			}else{
+				System.out.print("恭喜您中獎了，獎金為200元！");
+			}
+		}else{
+			System.out.print("很抱歉...您沒有中獎。");
+		}
+	}
+}

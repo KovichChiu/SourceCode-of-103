@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class Problem01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scn = new Scanner(System.in);
+		String[] Enn = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+		int[] Major = { 0, 4, 7 };
+		int[] Minor = { 0, 3, 7 };
+		int Times = scn.nextInt();
+		int times = 0;
+		while (times < Times) {
+			String str = scn.next();
+			char[] data = str.toCharArray();
+			boolean jujge = true;
+			for (int i = 0; i < data.length; i++) {
+				if (data[i] == 'm') {
+					jujge = true;
+				}
+			}
+			if (jujge) {
+				for (int i = 0; i < Enn.length; i++) {
+					String s = String.valueOf(data[0]);
+					if (s.equals(Enn[i])) {
+						for (int j = 0; j < Major.length; j++) {
+							if ((i + Major[j]) >= 12) {
+								System.out.print(Enn[(i + Major[j]) - 12] + " ");
+							} else {
+								System.out.print(Enn[i + Major[j]] + " ");
+							}
+						}
+					}
+				}
+			}else{
+				for (int i = 0; i < Enn.length; i++) {
+					String s = String.valueOf(data[0]);
+					if (s.equals(Enn[i])) {
+						for (int j = 0; j < Minor.length; j++) {
+							if ((i + Major[j]) >= 12) {
+								System.out.print(Enn[(i + Minor[j]) - 12] + " ");
+							} else {
+								System.out.print(Enn[i + Minor[j]] + " ");
+							}
+						}
+					}
+				}
+			}
+			times++;
+		}
+	}
+}

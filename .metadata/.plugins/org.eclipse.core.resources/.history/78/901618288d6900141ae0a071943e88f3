@@ -1,0 +1,18 @@
+public class HW_002 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		boolean [] num = new boolean[43];
+		int ran;
+		for(int i = 0;i<6;i++){
+			do{
+				ran=(int) ((Math.random()*42)+1);
+			} while(num[ran]=true);
+			System.out.print(num[ran]+"\t");
+			num[ran]=true;
+		}
+	}
+}

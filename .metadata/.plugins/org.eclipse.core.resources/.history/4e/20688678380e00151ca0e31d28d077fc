@@ -1,0 +1,1373 @@
+package testAWT;
+
+import java.util.Random;
+import java.util.ArrayList;
+
+public class testBox {
+	private Random ran = new Random();
+	private int Color;
+	private int high;
+	private int width;
+	private int[][] box = new int[10][20];
+	ArrayList<Integer> arrRemem = new ArrayList<Integer>();
+	private makeBox newBox;
+	
+	public testBox() {
+		// *將 10X20 的陣列歸零。
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 20; j++) {
+				box[i][j] = 0;
+			}
+		}
+	}
+
+	public void setNumber(int i, int j, int n) {
+		box[i][j] = n;
+	}
+
+	public int getNumber(int i, int j) {
+		return box[i][j];
+	}
+	public boolean checklimit(){
+		boolean jujge = true;
+		if(arrRemem.get(5) == 19){
+			jujge = false;
+		}
+		return jujge;
+	}
+	public void checkHor() {
+		boolean checkLine = true;
+		for(int i=0;i<=high;i++){
+			checkLine = true;
+			for(int j=0;j<10;j++){
+				if(box[j][arrRemem.get(2+i)] == 0){
+					checkLine = false;
+				}
+			}
+			if(checkLine){
+				cleanLine(arrRemem.get(2+i));
+			}
+		}
+	}
+
+	public void cleanLine(int j) {
+		for (int i = 0; i < 10; i++) {
+			box[i][j] = 0;
+		}
+		for(int i=0;i<10;i++){
+			int [] data = new int [j];
+			for(int h=j-1;h>=0;h--){
+				data[h] = box[i][h];
+				box[i][h] = 0;
+				box[i][h+1] = data[h]; 
+			}
+		}
+	}
+	public int getBox_j(){
+		int n = 0;
+		switch(high){
+		case 0:
+			n = arrRemem.get(2);
+			break;
+		case 1:
+			n = arrRemem.get(3);
+			break;
+		case 2:
+			n = arrRemem.get(4);
+			break;
+		case 3:
+			n = arrRemem.get(5);
+			break;
+		}
+		return n;
+	}
+	public int checkBottom(Integer i,int j) {
+		System.out.println("i="+i);
+		int min=20;
+		for(int x=j;x<20;x++){
+			if(box[i][x]!=0){
+				if(min>x){
+					min = x;
+				}
+			}
+		}
+		System.out.println("j="+j);
+		return min;
+	}
+	public void speceBox(){
+		boolean jujge = Downtouch();
+			while(getBox_j()<19 && jujge){
+				BoxDown();
+				jujge = Downtouch();
+			}
+	}
+	
+	public void MakeNewBox(){
+		arrRemem.clear();
+		Color = ran.nextInt(6)+1;
+		high = ran.nextInt(4);
+		newBox = new makeBox(high);
+		arrRemem.add(Color); //0
+		arrRemem.add(high);  //1
+		/*
+		 * 起始高度
+		 */
+		arrRemem.add(0);     //2
+		arrRemem.add(1);     //3
+		arrRemem.add(2);     //4
+		arrRemem.add(3);     //5
+		switch(high){
+		case 0:
+			width = ran.nextInt(7);
+			arrRemem.add(width); //6
+			for(int i=0;i<newBox.getalength();i++){
+				box[width+newBox.geta_i(i)][0] = Color;
+				arrRemem.add(width+newBox.geta_i(i));//7,8,9,10
+			}
+			break;
+		case 1:
+			width = ran.nextInt(8);
+			arrRemem.add(width); //6
+			for(int i=0;i<newBox.getalength();i++){
+				box[width+newBox.geta_i(i)][0] = Color;
+				arrRemem.add(width+newBox.geta_i(i));//
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[width+newBox.getb_i(i)][1] = Color;
+				arrRemem.add(width+newBox.getb_i(i));//7,8,9,10
+			}
+			break;
+		case 2:
+			width = ran.nextInt(9);
+			arrRemem.add(width); //6
+			for(int i=0;i<newBox.getalength();i++){
+				box[width+newBox.geta_i(i)][0] = Color;
+				arrRemem.add(width+newBox.geta_i(i));//7,8,9,10
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[width+newBox.getb_i(i)][1] = Color;
+				arrRemem.add(width+newBox.getb_i(i));//7,8,9,10
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[width+newBox.getc_i(i)][2] = Color;
+				arrRemem.add(width+newBox.getc_i(i));//7,8,9,10
+			}
+			break;
+		case 3:
+			width = ran.nextInt(10);
+			arrRemem.add(width); //6
+			for(int i=0;i<newBox.getalength();i++){
+				box[width+newBox.geta_i(i)][0] = Color;
+				arrRemem.add(width+newBox.geta_i(i));//7,8,9,10
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[width+newBox.getb_i(i)][1] = Color;
+				arrRemem.add(width+newBox.getb_i(i));//7,8,9,10
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[width+newBox.getc_i(i)][2] = Color;
+				arrRemem.add(width+newBox.getc_i(i));//7,8,9,10
+			}
+			for(int i=0;i<newBox.getdlength();i++){
+				box[width+newBox.getd_i(i)][3] = Color;
+				arrRemem.add(width+newBox.getd_i(i));//7,8,9,10
+			}
+			break;
+		}
+		
+	}
+	public void turnBox(){
+		System.out.println("DO");
+		int seat1_i;
+		int seat4_i;
+		int seat1_j;
+		int seat4_j;
+		int alen;
+		int bStart;
+		int blen;
+		int cStart;
+		int clen;
+		switch(high){
+		case 0:
+			newBox.newa(1);
+			newBox.newb(1);
+			newBox.newc(1);
+			newBox.newd(1);
+			int case_1_i = arrRemem.get(8);
+			int case_1_j = arrRemem.get(2);
+			for(int i=0;i<4;i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=0;i<4;i++){
+				arrRemem.set(2+i, case_1_j-2+i);
+				arrRemem.set(7+i, case_1_i);
+			}
+			for(int i=0;i<4;i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2+i)] = Color;
+			}
+			high = 3;
+			break;
+		case 1:
+			alen = newBox.getalength();
+			bStart = alen;
+			blen = newBox.getblength();
+			cStart = bStart+blen;
+			clen = newBox.getclength();
+			for(int i=0;i<alen;i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=bStart;i<4;i++){
+				box[arrRemem.get(7+i)][arrRemem.get(3)] = 0;
+			}
+			switch (alen) {
+			case 1:
+				seat1_i = arrRemem.get(7);
+				seat4_i = arrRemem.get(10);
+				if (seat1_i == seat4_i) {
+					newBox.newa(2);
+					newBox.newb(1);
+					newBox.newc(1);
+					newBox.seta(0, arrRemem.get(8));
+					arrRemem.set(7, arrRemem.get(8));
+					newBox.seta(1, arrRemem.get(8) + 1);
+					arrRemem.set(8, arrRemem.get(8) + 1);
+					newBox.setb(0, arrRemem.get(8));
+					arrRemem.set(9, arrRemem.get(8));
+					newBox.setc(0, arrRemem.get(8));
+					arrRemem.set(10, arrRemem.get(8));
+					seat1_j = arrRemem.get(2);
+					arrRemem.set(2, seat1_j);
+					arrRemem.set(3, seat1_j+1);
+					arrRemem.set(4, seat1_j + 2);
+					arrRemem.set(5, seat1_j + 3);
+				} else {
+					if (seat1_i == (seat4_i) - 1) {
+						newBox.newa(1);
+						newBox.newb(2);
+						newBox.newc(1);
+						newBox.seta(0, arrRemem.get(7));
+						arrRemem.set(7, arrRemem.get(7));
+						newBox.setb(0, arrRemem.get(7) - 1);
+						arrRemem.set(8, arrRemem.get(7) - 1);
+						newBox.setb(1, arrRemem.get(7));
+						arrRemem.set(9, arrRemem.get(7));
+						newBox.setc(0, arrRemem.get(7));
+						arrRemem.set(10, arrRemem.get(7));
+						seat1_j = arrRemem.get(2);
+						arrRemem.set(2, seat1_j);
+						arrRemem.set(3, seat1_j + 1);
+						arrRemem.set(4, seat1_j + 2);
+						arrRemem.set(5, seat1_j + 3);
+
+					} else {
+						newBox.newa(1);
+						newBox.newb(1);
+						newBox.newc(2);
+						newBox.seta(0, arrRemem.get(9));
+						arrRemem.set(7, arrRemem.get(9));
+						newBox.setb(0, arrRemem.get(9));
+						arrRemem.set(8, arrRemem.get(9));
+						newBox.setc(0, arrRemem.get(9) - 1);
+						arrRemem.set(9, arrRemem.get(9) - 1);
+						newBox.setc(1, arrRemem.get(9) + 1);
+						arrRemem.set(10, arrRemem.get(9) + 1);
+						seat1_j = arrRemem.get(2);
+						arrRemem.set(2, seat1_j);
+						arrRemem.set(3, seat1_j + 1);
+						arrRemem.set(4, seat1_j + 2);
+						arrRemem.set(5, seat1_j + 3);
+					}
+				}
+				high = 2;
+				break;
+			case 2:
+				seat1_i = arrRemem.get(7);
+				seat4_i = arrRemem.get(10);
+				if(seat1_i == seat4_i){
+					newBox.newa(1);
+					newBox.newb(2);
+					newBox.newc(1);
+					newBox.seta(0, arrRemem.get(9));
+					newBox.setb(0, arrRemem.get(9));
+					newBox.setb(1, arrRemem.get(9)+1);
+					newBox.setc(0, arrRemem.get(9)+1);
+					arrRemem.set(7, arrRemem.get(9));
+					arrRemem.set(8, arrRemem.get(9));
+					arrRemem.set(9, arrRemem.get(9)+1);
+					arrRemem.set(10, arrRemem.get(9));
+					seat1_j = arrRemem.get(2);
+					arrRemem.set(2, seat1_j);
+					arrRemem.set(3, seat1_j + 1);
+					arrRemem.set(4, seat1_j + 2);
+					arrRemem.set(5, seat1_j + 3);
+					high = 2;
+				}else{
+					if(seat1_i == seat4_i-2){
+						newBox.newa(1);
+						newBox.newb(2);
+						newBox.newc(1);
+						newBox.seta(0, arrRemem.get(9));
+						newBox.setb(0, arrRemem.get(9)-1);
+						newBox.setb(1, arrRemem.get(9));
+						newBox.setc(0, arrRemem.get(9)-1);
+						arrRemem.set(7, arrRemem.get(9));
+						arrRemem.set(8, arrRemem.get(9)-1);
+						arrRemem.set(9, arrRemem.get(9));
+						arrRemem.set(10, arrRemem.get(9)-1);
+						seat1_j = arrRemem.get(2);
+						arrRemem.set(2, seat1_j);
+						arrRemem.set(3, seat1_j + 1);
+						arrRemem.set(4, seat1_j + 2);
+						arrRemem.set(5, seat1_j + 3);
+						high = 2;
+					}else{
+						newBox.newa(2);
+						newBox.newb(2);
+						newBox.newc(0);
+						high = 1;
+					}
+				}
+				break;
+			case 3:
+				seat1_i = arrRemem.get(7);
+				seat4_i = arrRemem.get(10);
+				if(seat1_i == seat4_i){
+					newBox.newa(2);
+					newBox.newb(1);
+					newBox.newc(1);
+					newBox.seta(0, arrRemem.get(8));
+					newBox.seta(1, arrRemem.get(8) + 1);
+					newBox.setb(0, arrRemem.get(8));
+					newBox.setc(0, arrRemem.get(8));
+					arrRemem.set(7, arrRemem.get(8));
+					arrRemem.set(8, arrRemem.get(8) + 1);
+					arrRemem.set(9, arrRemem.get(8)-1);
+					arrRemem.set(10, arrRemem.get(8)-1);
+					seat1_j = arrRemem.get(2)-1;
+					arrRemem.set(2, seat1_j);
+					arrRemem.set(3, seat1_j+1);
+					arrRemem.set(4, seat1_j + 2);
+					arrRemem.set(5, seat1_j + 3);
+				}else{
+					if(seat1_i == seat4_i-1){
+						newBox.newa(1);
+						newBox.newb(2);
+						newBox.newc(1);
+						newBox.seta(0, arrRemem.get(8));
+						newBox.setb(0, arrRemem.get(8));
+						newBox.setb(1, arrRemem.get(8)+1);
+						newBox.setc(0, arrRemem.get(8));
+						arrRemem.set(7, arrRemem.get(8));
+						arrRemem.set(8, arrRemem.get(8));						
+						arrRemem.set(9, arrRemem.get(8)+1);						
+						arrRemem.set(10, arrRemem.get(8));
+						seat1_j = arrRemem.get(2)-1;
+						arrRemem.set(2, seat1_j);
+						arrRemem.set(3, seat1_j + 1);
+						arrRemem.set(4, seat1_j + 2);
+						arrRemem.set(5, seat1_j + 3);
+					}else{
+						newBox.newa(1);
+						newBox.newb(1);
+						newBox.newc(2);
+						newBox.seta(0, arrRemem.get(8));
+						newBox.setb(0, arrRemem.get(8));
+						newBox.setc(0, arrRemem.get(8));
+						newBox.setc(1, arrRemem.get(8) + 1);
+						arrRemem.set(7, arrRemem.get(8));					
+						arrRemem.set(8, arrRemem.get(8));						
+						arrRemem.set(9, arrRemem.get(8));						
+						arrRemem.set(10, arrRemem.get(8) + 1);
+						seat1_j = arrRemem.get(2)-1;
+						arrRemem.set(2, seat1_j);
+						arrRemem.set(3, seat1_j + 1);
+						arrRemem.set(4, seat1_j + 2);
+						arrRemem.set(5, seat1_j + 3);
+					}
+				}
+				high = 2;
+				break;
+			}
+			alen = newBox.getalength();
+			bStart = alen;
+			blen = newBox.getblength();
+			cStart = bStart+blen;
+			clen = newBox.getclength();
+			for(int i=0;i<alen;i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			for(int i=bStart;i<alen+blen;i++){
+				box[arrRemem.get(7+i)][arrRemem.get(3)] = Color;
+			}
+			for(int i=cStart;i<alen+blen+clen;i++){
+				box[arrRemem.get(7+i)][arrRemem.get(4)] = Color;
+			}
+			break;
+		case 2:
+			high = 1;
+			alen = newBox.getalength();
+			bStart = alen;
+			blen = newBox.getblength();
+			cStart = bStart+blen;
+			clen = newBox.getclength(); 
+			for(int i=0;i<alen;i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=bStart;i<alen+blen;i++){
+				box[arrRemem.get(7+i)][arrRemem.get(3)] = 0;
+			}
+			for(int i=cStart;i<alen+blen+clen;i++){
+				box[arrRemem.get(7+i)][arrRemem.get(4)] = 0;
+			}
+			int a_j_len = 0;
+			for(int i=0;i<4;i++){
+				if(arrRemem.get(2) == arrRemem.get(2+i))
+					a_j_len++;
+			}
+			switch(a_j_len){
+			case 1:
+				seat1_i = 10;
+				seat1_j = 20;
+				for(int i=0;i<alen;i++){
+					if(seat1_i>arrRemem.get(7+i)){
+						seat1_i = arrRemem.get(7+1);
+						seat1_j = arrRemem.get(2);
+					}
+				}
+				for(int i=bStart;i<alen+blen;i++){
+					if(seat1_i>arrRemem.get(7+i)){
+						seat1_i = arrRemem.get(7+1);
+						seat1_j = arrRemem.get(3);
+					}
+				}
+				for(int i=cStart;i<alen+blen+clen;i++){
+					if(seat1_i>arrRemem.get(7+i)){
+						seat1_i = arrRemem.get(7+1);
+						seat1_j = arrRemem.get(4);
+					}
+				}
+				seat4_j = arrRemem.get(4);
+				if(seat1_j == seat4_j){
+					newBox.newa(3);
+					newBox.newb(1);
+					newBox.newc(0);
+					newBox.seta(0, arrRemem.get(8));
+					newBox.seta(1, arrRemem.get(8)+1);
+					newBox.seta(2, arrRemem.get(8)+2);
+					newBox.setb(0, arrRemem.get(8) + 2);
+					arrRemem.set(7, arrRemem.get(8));					
+					arrRemem.set(8, arrRemem.get(8)+1);						
+					arrRemem.set(9, arrRemem.get(8)+1);						
+					arrRemem.set(10, arrRemem.get(8) + 1);
+					seat1_j = arrRemem.get(3);
+					arrRemem.set(2, seat1_j);
+					arrRemem.set(3, seat1_j+1);
+					arrRemem.set(4, seat1_j+2);
+					arrRemem.set(5, seat1_j+3);
+				}else{
+					if(seat1_j == seat4_j-1){
+						newBox.newa(3);
+						newBox.newb(1);
+						newBox.newc(0);
+						newBox.seta(0, arrRemem.get(8));
+						newBox.seta(1, arrRemem.get(8)+1);
+						newBox.seta(2, arrRemem.get(8)+1);
+						newBox.setb(0, arrRemem.get(8)+2);
+						arrRemem.set(7, arrRemem.get(8));					
+						arrRemem.set(8, arrRemem.get(8)+1);						
+						arrRemem.set(9, arrRemem.get(8));						
+						arrRemem.set(10, arrRemem.get(8)+1);
+						seat1_j = arrRemem.get(3);
+						arrRemem.set(2, seat1_j);
+						arrRemem.set(3, seat1_j+1);
+						arrRemem.set(4, seat1_j+2);
+						arrRemem.set(5, seat1_j+3);
+					}else{
+						newBox.newa(3);
+						newBox.newb(1);
+						newBox.newc(0);
+						newBox.seta(0, arrRemem.get(7));
+						newBox.seta(1, arrRemem.get(7)+1);
+						newBox.seta(2, arrRemem.get(7)+2);
+						newBox.setb(0, arrRemem.get(7));
+						arrRemem.set(7, arrRemem.get(7));					
+						arrRemem.set(8, arrRemem.get(7)+1);						
+						arrRemem.set(9, arrRemem.get(7)+2);						
+						arrRemem.set(10, arrRemem.get(7));
+						seat1_j = arrRemem.get(4);
+						arrRemem.set(2, seat1_j);
+						arrRemem.set(3, seat1_j+1);
+						arrRemem.set(4, seat1_j+2);
+						arrRemem.set(5, seat1_j+3);
+					}
+				}
+				break;
+			case 2:
+				seat1_i = arrRemem.get(7);
+				seat4_i = arrRemem.get(10);
+				if(seat1_i > seat4_i){
+				newBox.newa(2);
+				newBox.newb(2);
+				newBox.newc(0);
+				newBox.seta(0, arrRemem.get(8));
+				newBox.seta(1, arrRemem.get(8)+1);
+				newBox.setb(0, arrRemem.get(8)+1);
+				newBox.setb(1, arrRemem.get(8)+2);
+				arrRemem.set(7, arrRemem.get(8));					
+				arrRemem.set(8, arrRemem.get(8)+1);						
+				arrRemem.set(9, arrRemem.get(8));						
+				arrRemem.set(10, arrRemem.get(8)+1);
+				seat1_j = arrRemem.get(3);
+				arrRemem.set(2, seat1_j);
+				arrRemem.set(3, seat1_j+1);
+				arrRemem.set(4, seat1_j+2);
+				arrRemem.set(5, seat1_j+3);
+				}else{
+					newBox.newa(2);
+					newBox.newb(2);
+					newBox.newc(0);
+					newBox.seta(0, arrRemem.get(9));
+					newBox.seta(1, arrRemem.get(9)+1);
+					newBox.setb(0, arrRemem.get(9)-1);
+					newBox.setb(1, arrRemem.get(9));
+					arrRemem.set(7, arrRemem.get(9));					
+					arrRemem.set(8, arrRemem.get(9)+1);						
+					arrRemem.set(9, arrRemem.get(9)-1);						
+					arrRemem.set(10, arrRemem.get(9)+1);
+					seat1_j = arrRemem.get(3);
+					arrRemem.set(2, seat1_j);
+					arrRemem.set(3, seat1_j+1);
+					arrRemem.set(4, seat1_j+2);
+					arrRemem.set(5, seat1_j+3);
+				}
+				alen = newBox.getalength();
+				bStart = alen;
+				blen = newBox.getblength();
+				for(int i=0;i<alen;i++){
+					box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+				}
+				for(int i=bStart;i<4;i++){
+					box[arrRemem.get(7+i)][arrRemem.get(3)] = Color;
+				}
+				break;
+			case 3:
+				seat1_i = 0;
+				seat1_j = 0;
+				for(int i=0;i<alen;i++){
+					if(seat1_i<arrRemem.get(7+i)){
+						seat1_i = arrRemem.get(7+1);
+						seat1_j = arrRemem.get(2);
+					}
+				}
+				for(int i=bStart;i<alen+blen;i++){
+					if(seat1_i<arrRemem.get(7+i)){
+						seat1_i = arrRemem.get(7+1);
+						seat1_j = arrRemem.get(3);
+					}
+				}
+				for(int i=cStart;i<alen+blen+clen;i++){
+					if(seat1_i<arrRemem.get(7+i)){
+						seat1_i = arrRemem.get(7+1);
+						seat1_j = arrRemem.get(4);
+					}
+				}
+				seat4_j = arrRemem.get(2);
+				
+				if(seat1_j == seat4_j){
+					newBox.newa(1);
+					newBox.newb(3);
+					newBox.newc(0);
+					newBox.seta(0, arrRemem.get(9)-1);
+					newBox.seta(0, arrRemem.get(9)-1);
+					newBox.setb(1, arrRemem.get(9));
+					newBox.setb(2, arrRemem.get(9)+1);
+					arrRemem.set(7, arrRemem.get(9)-1);					
+					arrRemem.set(8, arrRemem.get(9)-1);						
+					arrRemem.set(9, arrRemem.get(9));						
+					arrRemem.set(10, arrRemem.get(9)+1);
+					seat1_j = arrRemem.get(3);
+					arrRemem.set(2, seat1_j);
+					arrRemem.set(3, seat1_j+1);
+					arrRemem.set(4, seat1_j+2);
+					arrRemem.set(5, seat1_j+3);
+				}else{
+					if(seat1_j == seat4_j-1){
+						newBox.newa(1);
+						newBox.newb(3);
+						newBox.newc(0);
+						newBox.seta(0, arrRemem.get(9));
+						newBox.seta(0, arrRemem.get(9)-1);
+						newBox.setb(1, arrRemem.get(9));
+						newBox.setb(2, arrRemem.get(9)+1);
+						arrRemem.set(7, arrRemem.get(9));					
+						arrRemem.set(8, arrRemem.get(9)-1);						
+						arrRemem.set(9, arrRemem.get(9));						
+						arrRemem.set(10, arrRemem.get(9)+1);
+						seat1_j = arrRemem.get(2);
+						arrRemem.set(2, seat1_j);
+						arrRemem.set(3, seat1_j+1);
+						arrRemem.set(4, seat1_j+2);
+						arrRemem.set(5, seat1_j+3);
+					}else{
+						newBox.newa(1);
+						newBox.newb(3);
+						newBox.newc(0);
+						newBox.seta(0, arrRemem.get(9)+1);
+						newBox.seta(0, arrRemem.get(9)-1);
+						newBox.setb(1, arrRemem.get(9));
+						newBox.setb(2, arrRemem.get(9)+1);
+						arrRemem.set(7, arrRemem.get(9)-1);					
+						arrRemem.set(8, arrRemem.get(9)-1);						
+						arrRemem.set(9, arrRemem.get(9));						
+						arrRemem.set(10, arrRemem.get(9)+1);
+						seat1_j = arrRemem.get(2);
+						arrRemem.set(2, seat1_j);
+						arrRemem.set(3, seat1_j+1);
+						arrRemem.set(4, seat1_j+2);
+						arrRemem.set(5, seat1_j+3);
+					}
+				}
+				alen = newBox.getalength();
+				bStart = alen;
+				blen = newBox.getblength();
+				for(int i=0;i<alen;i++){
+					box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+				}
+				for(int i=bStart;i<4;i++){
+					box[arrRemem.get(7+i)][arrRemem.get(3)] = Color;
+				}
+				break;
+			}
+		case 3:
+			for(int i=0;i<4;i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2+i)] = 0;
+			}
+			newBox.newa(4);
+			newBox.newb(0);
+			newBox.newc(0);
+			newBox.newd(0);
+			newBox.seta(0, arrRemem.get(9)-2);
+			newBox.seta(1, arrRemem.get(9)-1);
+			newBox.seta(2, arrRemem.get(9));
+			newBox.seta(3, arrRemem.get(9)+1);
+			arrRemem.set(7, arrRemem.get(9)-2);					
+			arrRemem.set(8, arrRemem.get(9)-1);						
+			arrRemem.set(9, arrRemem.get(9));						
+			arrRemem.set(10, arrRemem.get(9)+1);
+			arrRemem.set(2, arrRemem.get(4));
+			for(int i=0;i<4;i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			high = 0;
+			break;
+		}
+	}
+	public void BoxDown(){
+		int instArr;
+		int bStart;
+		int cStart;
+		int dStart;
+		/*
+		 * arrRemem.get(1) == high
+		 */
+		switch(high){
+		case 0:
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			instArr = arrRemem.get(2)+1;
+			arrRemem.remove(2);
+			arrRemem.add(2, instArr);
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			break;
+		case 1:
+			bStart = 7+newBox.getalength();
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = 0;
+			}
+			for(int i=0;i<arrRemem.get(1)+1;i++){
+				instArr = arrRemem.get(2+i)+1;
+				arrRemem.remove(2+i);
+				arrRemem.add((2+i), instArr);
+			}
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = Color;
+			}
+			break;
+		case 2:
+			bStart = 7+newBox.getalength();
+			cStart = bStart+newBox.getblength();
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = 0;
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[arrRemem.get(cStart+i)][arrRemem.get(4)] = 0;
+			}
+			for(int i=0;i<arrRemem.get(1)+1;i++){
+				instArr = arrRemem.get(2+i)+1;
+				arrRemem.remove(2+i);
+				arrRemem.add((2+i), instArr);
+			}
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = Color;
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[arrRemem.get(cStart+i)][arrRemem.get(4)] = Color;
+			}
+			break;
+		case 3:
+			bStart = 7+newBox.getalength();
+			cStart = bStart+newBox.getblength();
+			dStart = cStart+newBox.getdlength();
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = 0;
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[arrRemem.get(cStart+i)][arrRemem.get(4)] = 0;
+			}
+			for(int i=0;i<newBox.getdlength();i++){
+				box[arrRemem.get(dStart+i)][arrRemem.get(5)] = 0;
+			}
+			for(int i=0;i<arrRemem.get(1)+1;i++){
+				instArr = arrRemem.get(2+i)+1;
+				arrRemem.remove(2+i);
+				arrRemem.add((2+i), instArr);
+			}
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = Color;
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[arrRemem.get(cStart+i)][arrRemem.get(4)] = Color;
+			}
+			for(int i=0;i<newBox.getdlength();i++){
+				box[arrRemem.get(dStart+i)][arrRemem.get(5)] = Color;
+			}
+			break;
+		}
+	}
+	public void BoxRight(){
+		int instArr;
+		int bStart;
+		int cStart;
+		int dStart;
+		switch(arrRemem.get(1)){
+		case 0:
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=0;i<4;i++){
+				instArr = arrRemem.get(7+i)+1;
+				arrRemem.remove(7+i);
+				arrRemem.add(7+i, instArr);
+			}
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			break;
+		case 1:
+			bStart = 7+newBox.getalength();
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = 0;
+			}
+			for(int i=0;i<4;i++){
+				instArr = arrRemem.get(7+i)+1;
+				arrRemem.remove(7+i);
+				arrRemem.add(7+i, instArr);
+			}
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = Color;
+			}
+			break;
+		case 2:
+			bStart = 7+newBox.getalength();
+			cStart = bStart+newBox.getblength();
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = 0;
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[arrRemem.get(cStart+i)][arrRemem.get(4)] = 0;
+			}
+			for(int i=0;i<4;i++){
+				instArr = arrRemem.get(7+i)+1;
+				arrRemem.remove(7+i);
+				arrRemem.add(7+i, instArr);
+			}
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = Color;
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[arrRemem.get(cStart+i)][arrRemem.get(4)] = Color;
+			}
+			break;
+		case 3:
+			bStart = 7+newBox.getalength();
+			cStart = bStart+newBox.getblength();
+			dStart = cStart+newBox.getclength();
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = 0;
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[arrRemem.get(cStart+i)][arrRemem.get(4)] = 0;
+			}
+			for(int i=0;i<newBox.getdlength();i++){
+				box[arrRemem.get(dStart+i)][arrRemem.get(5)] = 0;
+			}
+			for(int i=0;i<4;i++){
+				instArr = arrRemem.get(7+i)+1;
+				arrRemem.remove(7+i);
+				arrRemem.add(7+i, instArr);
+			}
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = Color;
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[arrRemem.get(cStart+i)][arrRemem.get(4)] = Color;
+			}
+			for(int i=0;i<newBox.getdlength();i++){
+				box[arrRemem.get(dStart+i)][arrRemem.get(5)] = Color;
+			}
+			break;
+		}
+	}
+	public void BoxLeft(){
+		int instArr;
+		int bStart;
+		int cStart;
+		int dStart;
+		switch(arrRemem.get(1)){
+		case 0:
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=0;i<4;i++){
+				instArr = arrRemem.get(7+i)-1;
+				arrRemem.remove(7+i);
+				arrRemem.add(7+i, instArr);
+			}
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			break;
+		case 1:
+			bStart = 7+newBox.getalength();
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = 0;
+			}
+			for(int i=0;i<4;i++){
+				instArr = arrRemem.get(7+i)-1;
+				arrRemem.remove(7+i);
+				arrRemem.add(7+i, instArr);
+			}
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = Color;
+			}
+			break;
+		case 2:
+			bStart = 7+newBox.getalength();
+			cStart = bStart+newBox.getblength();
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = 0;
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[arrRemem.get(cStart+i)][arrRemem.get(4)] = 0;
+			}
+			for(int i=0;i<4;i++){
+				instArr = arrRemem.get(7+i)-1;
+				arrRemem.remove(7+i);
+				arrRemem.add(7+i, instArr);
+			}
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = Color;
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[arrRemem.get(cStart+i)][arrRemem.get(4)] = Color;
+			}
+			break;
+		case 3:
+			bStart = 7+newBox.getalength();
+			cStart = bStart+newBox.getblength();
+			dStart = cStart+newBox.getclength();
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = 0;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = 0;
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[arrRemem.get(cStart+i)][arrRemem.get(4)] = 0;
+			}
+			for(int i=0;i<newBox.getdlength();i++){
+				box[arrRemem.get(dStart+i)][arrRemem.get(5)] = 0;
+			}
+			for(int i=0;i<4;i++){
+				instArr = arrRemem.get(7+i)-1;
+				arrRemem.remove(7+i);
+				arrRemem.add(7+i, instArr);
+			}
+			for(int i=0;i<newBox.getalength();i++){
+				box[arrRemem.get(7+i)][arrRemem.get(2)] = Color;
+			}
+			for(int i=0;i<newBox.getblength();i++){
+				box[arrRemem.get(bStart+i)][arrRemem.get(3)] = Color;
+			}
+			for(int i=0;i<newBox.getclength();i++){
+				box[arrRemem.get(cStart+i)][arrRemem.get(4)] = Color;
+			}
+			for(int i=0;i<newBox.getdlength();i++){
+				box[arrRemem.get(dStart+i)][arrRemem.get(5)] = Color;
+			}
+			break;
+		}
+	}
+	
+	public boolean Turntouch(){
+		System.out.println("JUJGE");
+		boolean jujge = false;
+		int seat1_i;
+		int seat1_j;
+		int seat4_i;
+		int seat4_j;
+		int alen;
+		int bStart;
+		int blen;
+		int cStart;
+		int clen;
+		switch(high){
+		case 0:
+			if(arrRemem.get(2)+1<=19&&arrRemem.get(2)-2 >= 0&&box[arrRemem.get(8)][arrRemem.get(2)-1] == 0 && box[arrRemem.get(8)][arrRemem.get(2)-2] == 0 && box[arrRemem.get(8)][arrRemem.get(2)+1]==0){
+				jujge = true;
+			}
+			break;
+		case 1:
+			alen = newBox.getalength();
+			bStart = alen;
+			blen = newBox.getblength();
+			switch (alen) {
+			case 1:
+				seat1_i = arrRemem.get(7);
+				seat4_i = arrRemem.get(10);
+				int n = arrRemem.get(9);
+				if (seat1_i == seat4_i) {
+					if(arrRemem.get(2)+2<=19&&n-1>=0&&box[n-1][arrRemem.get(2)]==0 && box[n][arrRemem.get(2)]==0 && box[n][arrRemem.get(2)+2]==0){
+						jujge = true;
+					}
+				} else {
+					if (seat1_i == (seat4_i) - 1) {
+						if(arrRemem.get(3)+1<=19&&box[n][arrRemem.get(3)+1] ==0){
+							jujge = true;
+						}
+					} else {
+						if(arrRemem.get(3)+1<=19&&box[n][arrRemem.get(2)] == 0 && box[n-1][arrRemem.get(3)+1] ==0 && box[n][arrRemem.get(3)+1] == 0){
+							jujge = true;
+						}
+					}
+				}
+				break;
+			case 2:
+				seat1_i = arrRemem.get(7);
+				seat4_i = arrRemem.get(10);
+				int m = arrRemem.get(10);
+				if(seat1_i == seat4_i){
+					if(arrRemem.get(3)+1<=19&&box[m-1][arrRemem.get(2)] == 0 && box[m][arrRemem.get(3)+1] ==0){
+						jujge = true;
+					}
+				}else{
+					if(seat1_i == seat4_i-2){
+						m--;
+						if(arrRemem.get(3)+1<=19&&box[m-1][arrRemem.get(3)] ==0 && box[m-1][arrRemem.get(3)+1] == 0){
+							jujge = true;
+						}
+					}
+				}
+				break;
+			case 3:
+				seat1_i = arrRemem.get(7);
+				seat4_i = arrRemem.get(10);
+				int k = arrRemem.get(8);
+				if(seat1_i == seat4_i){
+					if(k+1<=9&&arrRemem.get(2)-1>=0&&k+1<=19&&box[k][arrRemem.get(2)-1]==0&&box[k][arrRemem.get(3)]==0&&box[k+1][arrRemem.get(2)-1]==0){
+						jujge = true;
+					}
+				}else{
+					if(seat1_i == seat4_i-1){
+						if(arrRemem.get(2)-1>=0&&box[k][arrRemem.get(2)-1]==0){
+							jujge = true;
+						}
+					}else{
+						if(k+1<=9&&arrRemem.get(2)-1>=0 && box[k][arrRemem.get(2)-1]==0 && box[k][arrRemem.get(3)]==0 && box[k+1][arrRemem.get(3)]==0){
+							jujge = true;
+						}
+					}
+				}
+				break;
+			}
+			break;
+		case 2:
+			alen = newBox.getalength();
+			bStart = alen;
+			blen = newBox.getblength();
+			cStart = bStart+blen;
+			clen = newBox.getclength(); 
+			int a_j_len = 0;
+			for(int i=0;i<4;i++){
+				if(arrRemem.get(2) == arrRemem.get(2+i))
+					a_j_len++;
+			}
+			switch(a_j_len){
+			case 1:
+				seat1_i = 10;
+				seat1_j = 20;
+				for(int i=0;i<alen;i++){
+					if(seat1_i>arrRemem.get(7+i)){
+						seat1_i = arrRemem.get(7+1);
+						seat1_j = arrRemem.get(2);
+					}
+				}
+				for(int i=bStart;i<alen+blen;i++){
+					if(seat1_i>arrRemem.get(7+i)){
+						seat1_i = arrRemem.get(7+1);
+						seat1_j = arrRemem.get(3);
+					}
+				}
+				for(int i=cStart;i<alen+blen+clen;i++){
+					if(seat1_i>arrRemem.get(7+i)){
+						seat1_i = arrRemem.get(7+1);
+						seat1_j = arrRemem.get(4);
+					}
+				}
+				seat4_j = arrRemem.get(4);
+				if(seat1_j == seat4_j){
+					int w = arrRemem.get(8);
+					int r = arrRemem.get(3);
+					if(w+1<=9 && box[w-1][r]==0 && box[w+1][r]==0 && box[w+1][r+1]==0){
+						jujge = true;
+					}
+				}else{
+					if(seat1_j == seat4_j-1){
+						int w = arrRemem.get(9);
+						int r = arrRemem.get(4);
+						if(w+1<=9 && box[w+1][r]==0){
+							jujge = true;
+						}
+					}else{
+						int w = arrRemem.get(9);
+						int r = arrRemem.get(4);
+						if(w+1<=9 && box[w-1][r]==0 && box[w-1][r+1]==0 && box[w+1][r]==0){
+							jujge = true;
+						}
+					}
+				}
+				break;
+			case 2:
+				seat1_i = arrRemem.get(7);
+				seat4_i = arrRemem.get(10);
+				if(seat1_i > seat4_i){
+					int w = arrRemem.get(8);
+					int r = arrRemem.get(3);
+					if(w+1<=9 && box[w][r+1]==0 && box[w+1][r+1]==0){
+						jujge = true;
+					}
+				}else{
+					int w = arrRemem.get(8);
+					int r = arrRemem.get(3);
+					if(w+1<=9 && box[w+1][r]==0 && box[w-1][r+1]==0){
+						jujge = true;
+					}
+				}
+				break;
+			case 3:
+				seat1_i = 0;
+				seat1_j = 0;
+				for(int i=0;i<alen;i++){
+					if(seat1_i<arrRemem.get(7+i)){
+						seat1_i = arrRemem.get(7+1);
+						seat1_j = arrRemem.get(2);
+					}
+				}
+				for(int i=bStart;i<alen+blen;i++){
+					if(seat1_i<arrRemem.get(7+i)){
+						seat1_i = arrRemem.get(7+1);
+						seat1_j = arrRemem.get(3);
+					}
+				}
+				for(int i=cStart;i<alen+blen+clen;i++){
+					if(seat1_i<arrRemem.get(7+i)){
+						seat1_i = arrRemem.get(7+1);
+						seat1_j = arrRemem.get(4);
+					}
+				}
+				seat4_j = arrRemem.get(2);
+				
+				if(seat1_j == seat4_j){
+					int w = arrRemem.get(9);
+					int r = arrRemem.get(4);
+					if(w+1<=9 && w+1>=0 && box[w+1][r]==0 && box[w-1][r-1]==0 && box[w-1][r]==0){
+						jujge = true;
+					}
+				}else{
+					if(seat1_j == seat4_j-1){
+						int w = arrRemem.get(8);
+						int r = arrRemem.get(3);
+						if(w-1>=0 && box[w-1][r]==0){
+							jujge = true;
+						}
+					}else{
+						int w = arrRemem.get(9);
+						int r = arrRemem.get(4);
+						if(w-1>=0 && w+1<=9 && box[w-1][r]==0 && box[w+1][r]==0 && box[w+1][r+1]==0){
+							jujge = true;
+						}
+					}
+				}
+			}
+			break;
+		case 3:
+			int g = arrRemem.get(8);
+			int f = arrRemem.get(4);
+			if(g-1>0 && g-2>=0 && g+1<=19 && box[g-1][f] ==0 && box[g-2][f]==0 && box[g+1][f]==0){
+				jujge = true;
+			}
+			break;
+		}
+		return jujge;
+	}
+	
+	public Boolean Righttouch(){
+		boolean jujge = true;
+		ArrayList <Integer> iarr = new ArrayList <Integer>();
+		ArrayList <Integer> jarr = new ArrayList <Integer>();
+		int [] iseat = {arrRemem.get(7),arrRemem.get(8),arrRemem.get(9),arrRemem.get(10)};
+		int [] jseat = new int [4];
+		switch(high){
+		case 0:
+			for(int i=0;i<4;i++){
+				jseat[i] = arrRemem.get(2);
+			}
+			break;
+		case 1:
+			for(int i=0;i<newBox.getalength();i++){
+				jseat[i] = arrRemem.get(2);
+			}
+			for(int i=newBox.getalength();i<newBox.getalength()+newBox.getblength();i++){
+				jseat[i] = arrRemem.get(3);
+			}
+			break;
+		case 2:
+			for(int i=0;i<newBox.getalength();i++){
+				jseat[i] = arrRemem.get(2);
+			}
+			for(int i=newBox.getalength();i<newBox.getalength()+newBox.getblength();i++){
+				jseat[i] = arrRemem.get(3);
+			}
+			for(int i=newBox.getalength()+newBox.getblength();i<newBox.getalength()+newBox.getblength()+newBox.getclength();i++){
+				jseat[i] = arrRemem.get(4);
+			}
+			break;
+		case 3:
+			for(int i=0;i<4;i++){
+				jseat[i] = arrRemem.get(2+i);
+			}
+			break;
+		}
+		for(int i=0;i<4;i++){
+			iarr.add(iseat[i]);
+			jarr.add(jseat[i]);
+		}
+		System.out.println("2. \n");
+		for(int i=0;i<iarr.size();i++){
+			for(int j=i+1;j<jarr.size();j++){
+				if(jarr.get(i) == jarr.get(j)){
+					iarr.remove(i);
+					jarr.remove(i);
+					i--;
+					break;
+				}
+			}
+		}
+		for(int i=0;i<iarr.size();i++){
+			System.out.println(iarr.get(i)+"\n"+jarr.get(i));
+			if(box[iarr.get(i)+1][jarr.get(i)] != 0){
+				jujge = false;
+			}
+		}
+		return jujge;
+	}
+	public boolean Lefttouch(){
+		boolean jujge = true;
+		ArrayList <Integer> iarr = new ArrayList <Integer>();
+		ArrayList <Integer> jarr = new ArrayList <Integer>();
+		int [] iseat = {arrRemem.get(7),arrRemem.get(8),arrRemem.get(9),arrRemem.get(10)};
+		int [] jseat = new int [4];
+		switch(high){
+		case 0:
+			for(int i=0;i<4;i++){
+				jseat[i] = arrRemem.get(2);
+			}
+			break;
+		case 1:
+			for(int i=0;i<newBox.getalength();i++){
+				jseat[i] = arrRemem.get(2);
+			}
+			for(int i=newBox.getalength();i<newBox.getalength()+newBox.getblength();i++){
+				jseat[i] = arrRemem.get(3);
+			}
+			break;
+		case 2:
+			for(int i=0;i<newBox.getalength();i++){
+				jseat[i] = arrRemem.get(2);
+			}
+			for(int i=newBox.getalength();i<newBox.getalength()+newBox.getblength();i++){
+				jseat[i] = arrRemem.get(3);
+			}
+			for(int i=newBox.getalength()+newBox.getblength();i<newBox.getalength()+newBox.getblength()+newBox.getclength();i++){
+				jseat[i] = arrRemem.get(4);
+			}
+			break;
+		case 3:
+			for(int i=0;i<4;i++){
+				jseat[i] = arrRemem.get(2+i);
+			}
+			break;
+		}
+		for(int i=0;i<4;i++){
+			iarr.add(iseat[i]);
+			jarr.add(jseat[i]);
+		}
+		System.out.println("2. \n");
+		for(int i=0;i<iarr.size();i++){
+			for(int j=i+1;j<jarr.size();j++){
+				if(jarr.get(i) == jarr.get(j)){
+					iarr.remove(j);
+					jarr.remove(j);
+					i--;
+					break;
+				}
+			}
+		}
+		for(int i=0;i<iarr.size();i++){
+			System.out.println(iarr.get(i)+"\n"+jarr.get(i));
+			if(box[iarr.get(i)-1][jarr.get(i)] != 0){
+				jujge = false;
+			}
+		}
+		return jujge;
+	}
+	public boolean Downtouch(){
+		boolean jujge = true;
+		System.out.println("in");
+		ArrayList <Integer> iarr = new ArrayList <Integer>();
+		ArrayList <Integer> jarr = new ArrayList <Integer>();
+		int [] iseat = {arrRemem.get(7),arrRemem.get(8),arrRemem.get(9),arrRemem.get(10)};
+		int [] jseat = new int [4];
+		switch(high){
+		case 0:
+			for(int i=0;i<4;i++){
+				jseat[i] = arrRemem.get(2);
+			}
+			break;
+		case 1:
+			for(int i=0;i<newBox.getalength();i++){
+				jseat[i] = arrRemem.get(2);
+			}
+			for(int i=newBox.getalength();i<newBox.getalength()+newBox.getblength();i++){
+				jseat[i] = arrRemem.get(3);
+			}
+			break;
+		case 2:
+			for(int i=0;i<newBox.getalength();i++){
+				jseat[i] = arrRemem.get(2);
+			}
+			for(int i=newBox.getalength();i<newBox.getalength()+newBox.getblength();i++){
+				jseat[i] = arrRemem.get(3);
+			}
+			for(int i=newBox.getalength()+newBox.getblength();i<newBox.getalength()+newBox.getblength()+newBox.getclength();i++){
+				jseat[i] = arrRemem.get(4);
+			}
+			break;
+		case 3:
+			for(int i=0;i<4;i++){
+				jseat[i] = arrRemem.get(2+i);
+			}
+			break;
+		}
+		
+		System.out.println("1. \n");
+		for(int i=0;i<4;i++){
+			iarr.add(iseat[i]);
+			jarr.add(jseat[i]);
+			System.out.println(iarr.get(i)+"\n"+jarr.get(i));
+		}
+		System.out.println("2. \n");
+		for(int i=0;i<iarr.size();i++){
+			for(int j=i+1;j<jarr.size();j++){
+				if(iarr.get(i) == iarr.get(j)){
+					iarr.remove(i);
+					jarr.remove(i);
+					i--;
+					break;
+				}
+				System.out.println(iarr.get(i)+"\n"+jarr.get(i));
+			}
+		}
+		System.out.println("3. \n");
+		for(int i=0;i<iarr.size();i++){
+			System.out.println(iarr.get(i)+"\n"+jarr.get(i));
+			if(box[iarr.get(i)][jarr.get(i)+1] != 0){
+				jujge = false;
+			}
+		}
+		return jujge;
+	}
+
+	
+}

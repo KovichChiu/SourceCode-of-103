@@ -1,0 +1,14 @@
+import java.util.Random;
+public class Class_004 {
+
+	/*
+	 * 4. 請設計一樂透亂數選號程式，由1~42中選出6個不重覆的數字組合並輸出。
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Random ran = new Random();
+		int a = ran.nextInt();
+		System.out.print(a);
+	}
+
+}

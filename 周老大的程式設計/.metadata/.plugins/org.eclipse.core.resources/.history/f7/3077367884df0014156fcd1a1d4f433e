@@ -1,0 +1,28 @@
+import java.util.*;
+public class Ten_to_Other {
+	public static void main(String[] args) {
+		ArrayList i = new ArrayList();
+		Scanner scn = new Scanner(System.in);
+		System.out.println("請輸入N(數字)/M(進制)。");
+		System.out.print("N:");
+		int n = scn.nextInt();
+		System.out.print("M:");
+		int m = scn.nextInt();
+		i.add(Hex(n,m));
+		for(int j=0;j<i.size();j++){
+			System.out.println(i.get(j));
+		}
+		System.out.println();
+	}
+	public static ArrayList Hex(int n,int m){
+		ArrayList a = new ArrayList();
+		if(n<m){
+			a.add(n);
+			return a;
+		}else{
+			a.add(n%m);
+			return Hex(n/m,m);
+		}
+		
+	}
+}

@@ -1,0 +1,21 @@
+import java.util.Random;
+
+public class HW_002 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Random ran = new Random();
+		int [] a = new int [5];
+		
+		for(int i = 1;i<=6;i++){
+			a[i]=ran.nextInt(42)+1;
+			if(a[i]==a[i-1]){
+				i--;
+			}
+			System.out.print(a[i]+"\t");
+		}
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 elements to &apos;aaa/src/testAWT&apos;&#x0D;&#x0A;- 原始物件：&apos;testAWT&apos;&#x0D;&#x0A;- 目的地元素：&apos;aaa/src/testAWT&apos;&#x0D;&#x0A;- 原始元素：&#x0D;&#x0A;JavaRefactoringDescriptorComment_textual_move_only=僅移動文字testAWT.Mylabel.java&#x0D;&#x0A;JavaRefactoringDescriptorComment_textual_move_only=僅移動文字testAWT.testMove.java&#x0D;&#x0A;JavaRefactoringDescriptorComment_textual_move_only=僅移動文字testAWT.testBox.java&#x0D;&#x0A;JavaRefactoringDescriptorComment_textual_move_only=僅移動文字testAWT.testlabel.java" description="複製編譯單元" destination="=aaa/src&lt;testAWT" element1="/src&lt;testAWT{Mylabel.java" element2="/src&lt;testAWT{testMove.java" element3="/src&lt;testAWT{testBox.java" element4="/src&lt;testAWT{testlabel.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1432907362719" units="4" version="1.0"/>
+</session>
